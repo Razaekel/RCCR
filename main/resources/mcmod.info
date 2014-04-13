@@ -1,0 +1,16 @@
+[
+{
+  "modid": "rccr",
+  "name": "Raz's Cubic Chunks Reborn",
+  "description": "Cubic Chunks - Reborn",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Razaekel"],
+  "credits": "Robinton, for the initial version",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
