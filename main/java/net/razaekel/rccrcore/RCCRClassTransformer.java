@@ -1,4 +1,4 @@
-package mod.razaekel.rccrcore;
+package net.razaekel.rccrcore;
 
 import static org.objectweb.asm.Opcodes.*;
 import static org.objectweb.asm.tree.AbstractInsnNode.*;
