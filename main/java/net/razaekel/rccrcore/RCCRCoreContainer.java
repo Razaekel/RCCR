@@ -19,13 +19,17 @@ public class RCCRCoreContainer extends DummyModContainer
 	{
 		super(new ModMetadata());
 		
-		ModMetadata myMeta = super.getMetadata();
-		myMeta.authorList = Arrays.asList("Razaekel");
-		myMeta.description = "Core Mod for RCCR. Required for RCCR.";
-		myMeta.modId = "rccr";
-		myMeta.version = "a1";
-		myMeta.name = "RCCR Core";
-		myMeta.url = "";
+		ModMetadata meta = super.getMetadata();
+		meta.modId = "rccr";
+		meta.name = "RCCR Core";
+		meta.version = "@VERSION@";
+		meta.credits = "Robinton, Ivorious";
+		meta.authorList = Arrays.asList("Razaekel");
+		meta.description = "Core Mod for RCCR. Required for RCCR.";
+		meta.url = "";
+		meta.updateUrl = "";
+		meta.screenshots = new String[0];
+		meta.logoFile = "";
 	}
 	
 	public boolean registerBus(EventBus bus, LoadController controller)
