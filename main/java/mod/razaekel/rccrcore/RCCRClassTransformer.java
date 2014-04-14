@@ -16,13 +16,12 @@ import org.objectweb.asm.tree.IntInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
-
 public class RCCRClassTransformer implements IClassTransformer {
 
 	@Override
 	public byte[] transform(String arg0, String arg1, byte[] arg2)
 	{		
-		System.out.println("********* INSIDE PATCHER");
+//		System.out.println("********* INSIDE PATCHER");
 		
 		if (arg0.equals("apl")) {
 			System.out.println("********* INSIDE OBFUSCATED CPG TRANSFORMER ABOUT TO PATCH: " + arg0);
