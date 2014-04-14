@@ -1,4 +1,4 @@
-package net.razaekel.rccrcore;
+package mod.razaekel.rccrcore;
 
 import java.util.Map;
 

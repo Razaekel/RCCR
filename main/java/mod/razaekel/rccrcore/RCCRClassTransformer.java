@@ -1,4 +1,4 @@
-package net.razaekel.rccrcore;
+package mod.razaekel.rccrcore;
 
 import static org.objectweb.asm.Opcodes.*;
 import static org.objectweb.asm.tree.AbstractInsnNode.*;
@@ -22,6 +22,8 @@ public class RCCRClassTransformer implements IClassTransformer {
 	@Override
 	public byte[] transform(String arg0, String arg1, byte[] arg2)
 	{		
+		System.out.println("********* INSIDE PATCHER");
+		
 		if (arg0.equals("apl")) {
 			System.out.println("********* INSIDE OBFUSCATED CPG TRANSFORMER ABOUT TO PATCH: " + arg0);
 			return patchClassASM(arg0, arg2, true);
