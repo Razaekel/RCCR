@@ -1,10 +1,11 @@
-package mod.razaekel.rccrcore;
+package mod.razaekel.rccrcore.transformers;
 
 import static org.objectweb.asm.Opcodes.*;
 import static org.objectweb.asm.tree.AbstractInsnNode.*;
 
 import java.util.Iterator;
 
+import jdk.internal.org.objectweb.asm.Type;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 import org.objectweb.asm.ClassReader;
@@ -16,7 +17,7 @@ import org.objectweb.asm.tree.IntInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
-public class RCCRClassTransformer implements IClassTransformer {
+public class ChunkProviderGenerateTransformer implements IClassTransformer {
 
 	@Override
 	public byte[] transform(String arg0, String arg1, byte[] arg2)
@@ -136,11 +137,18 @@ public class RCCRClassTransformer implements IClassTransformer {
                      */
 	                AbstractInsnNode remNode1 = m.instructions.get(bipush_index);   // mv.visitIntInsn(BIPUSH, 63);
 	               	                
-
+	                /*
+	                 * want to add bytecode to get the following:
+	                 * GETSTATIC mod/razaekel/rccr/RCCR.SeaLevel : I
+	                 * 
+	                 * should be
+	                 * 
+	                 * MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getSeaLevel", ()I);
+	                 */
 
 	                // make new instruction list
 	                InsnList toInject = new InsnList();
-					toInject.add(new IntInsnNode(BIPUSH, 127));
+					toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getSeaLevel", Type.getMethodDescriptor(Type.INT_TYPE)));
 	                // inject new instruction list into method instruction list
 	                m.instructions.insert(targetNode, toInject);
 	                
