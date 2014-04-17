@@ -25,7 +25,7 @@ public class RCCRCoreContainer extends DummyModContainer
 		super(new ModMetadata());
 		
 		ModMetadata meta = super.getMetadata();
-		meta.modId = "rccr";
+		meta.modId = "rccrcore";
 		meta.name = "RCCR Core";
 		meta.version = "@VERSION@";
 		meta.credits = "Robinton, Ivorious";
