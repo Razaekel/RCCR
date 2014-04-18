@@ -27,14 +27,22 @@ public class RCCRCoreContainer extends DummyModContainer
 		ModMetadata meta = super.getMetadata();
 		meta.modId = "rccrcore";
 		meta.name = "RCCR Core";
-		meta.version = "@VERSION@";
-		meta.credits = "Robinton, Ivorious";
-		meta.authorList = Arrays.asList("Razaekel");
 		meta.description = "Core Mod for RCCR. Required for RCCR.";
+		
 		meta.url = "";
 		meta.updateUrl = "";
-		meta.screenshots = new String[0];
+		
 		meta.logoFile = "";
+		meta.version = RCCRCore.VERSION;
+		meta.authorList = Arrays.asList("Razaekel");
+		meta.credits = "Ivorius";
+		meta.parent = "";
+		meta.screenshots = new String[0];
+		
+	    meta.useDependencyInformation = false;
+//	    meta.requiredMods = Arrays.asList("");
+//	    meta.dependencies = Arrays.asList("");
+//	    meta.dependants;
 	}
 
 	@Override

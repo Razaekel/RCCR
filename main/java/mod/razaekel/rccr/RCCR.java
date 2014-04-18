@@ -14,15 +14,8 @@ public class RCCR
 	@Instance(value = "rccr")
 	public static RCCR instance;
 
-	public static int SeaLevel = 127;
-
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-	}
-
-	public static int getSeaLevel()
-	{
-		return SeaLevel;
 	}
 }
