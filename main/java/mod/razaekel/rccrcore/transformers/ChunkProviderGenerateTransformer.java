@@ -8,6 +8,7 @@ import jdk.internal.org.objectweb.asm.Type;
 import mod.razaekel.rccrcore.RzClassTransformerClass;
 import net.minecraft.launchwrapper.IClassTransformer;
 
+import org.objectweb.asm.Type;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -21,7 +22,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 {
 	public ChunkProviderGenerateTransformer()
 	{
-		registerExpectedMethod("generateTerrain", "func_147424_a", getMethodDescriptor(Type.VOID_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.getObjectType("net/minecraft/block/Block")));
+		registerExpectedMethod("generateTerrain", "func_147424_a", getMethodDescriptor(Type.VOID_TYPE, Type.INT_TYPE, Type.INT_TYPE, "[Lnet/minecraft/block/Block;"));
 	}
 	
 	@Override
