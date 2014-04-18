@@ -4,7 +4,7 @@ import java.util.Map;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
-public class RCCRLoadingPlugin implements IFMLLoadingPlugin
+public class RCCRCoreLoadingPlugin implements IFMLLoadingPlugin
 {
 	@Override
 	public String[] getASMTransformerClass()
