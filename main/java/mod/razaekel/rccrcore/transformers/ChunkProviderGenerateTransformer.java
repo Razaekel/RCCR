@@ -110,7 +110,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 
 			// make new instruction list
 			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getSeaLevel", Type.getMethodDescriptor(Type.INT_TYPE)));
+			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rewedge/ReWedge", "getSeaLevel", Type.getMethodDescriptor(Type.INT_TYPE)));
 			// inject new instruction list into method instruction list
 			methodNode.instructions.insert(targetNode, toInject);
 

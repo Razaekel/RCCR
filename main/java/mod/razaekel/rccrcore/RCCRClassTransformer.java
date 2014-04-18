@@ -3,6 +3,7 @@ package mod.razaekel.rccrcore;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import cpw.mods.fml.common.Loader;
 import mod.razaekel.rccrcore.transformers.*;
 import net.minecraft.launchwrapper.IClassTransformer;
 
@@ -17,12 +18,15 @@ public class RCCRClassTransformer implements IClassTransformer
 		RzDevRemapper.setUp();
 		transformers = new Hashtable<String, RzClassTransformer>();
 		
-		registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
-	}
-	
-	private void registerTransformer(String clazz, RzClassTransformer transformer)
-	{
-		transformers.put(clazz, transformer);
+		if (Loader.isModLoaded("rewedge"))
+		{
+			registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
+		}
+		
+		if (Loader.isModLoaded("rccr"))
+		{
+			
+		}
 	}
 	
 	private void registerTransformer(String clazz, RzClassTransformer transformer)
