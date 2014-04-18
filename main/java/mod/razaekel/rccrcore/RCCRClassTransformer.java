@@ -9,7 +9,6 @@ import net.minecraft.launchwrapper.IClassTransformer;
 public class RCCRClassTransformer implements IClassTransformer
 {
 	private Hashtable<String, RzClassTransformer> transformers;
-	private ArrayList<RzClassTransformer> generalTransformers;
 	
 	public RCCRClassTransformer()
 	{
@@ -17,7 +16,6 @@ public class RCCRClassTransformer implements IClassTransformer
 		
 		RzDevRemapper.setUp();
 		transformers = new Hashtable<String, RzClassTransformer>();
-		generalTransformers = new ArrayList<RzClassTransformer>();
 		
 		registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
 	}
@@ -27,13 +25,13 @@ public class RCCRClassTransformer implements IClassTransformer
 		transformers.put(clazz, transformer);
 	}
 	
-	private void registerTransformer(RzClassTransformer transformer)
+	private void registerTransformer(String clazz, RzClassTransformer transformer)
 	{
-		generalTransformers.add(transformer);
+		transformers.put(clazz, transformer);
 	}
 	
 	@Override
-	public byte[] transform(String arg0, String arg1, byte[]arg2)
+	public byte[] transform(String arg0, String arg1, byte[] arg2)
 	{
 		if (arg2 != null)
 		{
@@ -43,16 +41,6 @@ public class RCCRClassTransformer implements IClassTransformer
 			if (transformer != null)
 			{
 				byte[] data = transformer.transform(arg0, arg1, result, arg0.equals(arg1));
-				
-				if (data != null)
-				{
-					result = data;
-				}
-			}
-			
-			for (RzClassTransformer generalTransformer : generalTransformers)
-			{
-				byte[] data = generalTransformer.transform(arg0, arg1, result, arg0.equals(arg1));
 				
 				if (data != null)
 				{
