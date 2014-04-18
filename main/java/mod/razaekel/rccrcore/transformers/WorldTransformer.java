@@ -22,7 +22,7 @@ public class WorldTransformer extends RzClassTransformerClass
 {
 	public WorldTransformer()
 	{
-		registerExpectedMethod("getBlock", "func_147439_b", getMethodDescriptor("net/minecraft/block/Block", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
+		registerExpectedMethod("getBlock", "getBlock", getMethodDescriptor("net/minecraft/block/Block", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 	}
 	
 	@Override
@@ -32,9 +32,9 @@ public class WorldTransformer extends RzClassTransformerClass
 		
 		int node_index = -1;
 		
-		if(methodID.equals("generateTerrain"))
+		if(methodID.equals("getBlock"))
 		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method" + methodID + "!");}
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			//System.out.println("m.instructions.size = " + m.instructions.size());
 
@@ -95,7 +95,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				2013-07-05 18:32:29 [INFO] [STDOUT] ********* index : 336 currentNode.getOpcode() = 110
 			 */
 
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 9 -> " + node_index);}
+			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 17 -> " + node_index);}
 
 			if(RCCRCore.DEBUG)
 			{
