@@ -23,7 +23,7 @@ public class RCCRClassTransformer implements IClassTransformer
 		
 //		if (Loader.isModLoaded("rewedge"))
 //		{
-//			registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
+			registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
 //		}
 	}
 	
