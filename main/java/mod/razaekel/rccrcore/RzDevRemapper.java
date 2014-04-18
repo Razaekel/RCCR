@@ -9,6 +9,7 @@ public class RzDevRemapper
 	public static void setUp()
 	{
 		fakeMappings.put("generateTerrain", "func_147424_a");
+		fakeMappings.put("getBlock", "getBlock");
 	}
 	
 	public static String getSrgName(String name)
