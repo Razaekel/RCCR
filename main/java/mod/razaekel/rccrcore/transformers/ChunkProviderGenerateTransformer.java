@@ -34,7 +34,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 		
 		if(methodID.equals("generateTerrain"))
 		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method!");}
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			//System.out.println("m.instructions.size = " + m.instructions.size());
 
@@ -67,7 +67,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 				2013-07-05 18:32:29 [INFO] [STDOUT] ********* index : 336 currentNode.getOpcode() = 110
 			 */
 
-			if(RCCRCore.DEBUG){System.out.println("********* bipush_index should be 2 -> " + node_index);}
+			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 2 -> " + node_index);}
 
 			if(RCCRCore.DEBUG)
 			{
