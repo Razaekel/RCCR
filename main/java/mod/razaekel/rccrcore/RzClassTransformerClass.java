@@ -38,6 +38,7 @@ public abstract class RzClassTransformerClass extends RzClassTransformer
 				String srgSignature = getSrgDescriptor(m.desc);
 				
 				if (RCCRCore.DEBUG){System.out.println("Getting " + srgName + " for " + className + " and " + srgSignature + " for " + m.desc +"!");}
+				if (RCCRCore.DEBUG){System.out.println("Checking " + srgName + " against " + methodInfo[0] + " and " + srgSignature + " against " + methodInfo[1] +"!");}
 				
 				if (srgName.equals(methodInfo[0]) && srgSignature.equals(methodInfo[1]))
 				{
