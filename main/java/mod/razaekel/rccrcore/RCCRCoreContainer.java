@@ -19,11 +19,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class RCCRCoreContainer extends DummyModContainer
 {
 	public static Logger logger = LogManager.getLogger("rccr");
-	
+
 	public RCCRCoreContainer()
 	{
 		super(new ModMetadata());
-		
+
 		ModMetadata meta = super.getMetadata();
 		meta.modId = "rccrcore";
 		meta.name = "RCCR Core";
@@ -36,7 +36,7 @@ public class RCCRCoreContainer extends DummyModContainer
 		meta.screenshots = new String[0];
 		meta.logoFile = "";
 	}
-	
+
 	@Override
 	public boolean registerBus(EventBus bus, LoadController controller)
 	{
@@ -53,7 +53,7 @@ public class RCCRCoreContainer extends DummyModContainer
 	public void init(FMLInitializationEvent evt) {
 
 	}
-	
+
 	@Subscribe
 	public void preInit(FMLPreInitializationEvent evt) {
 
