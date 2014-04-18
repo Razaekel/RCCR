@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class RCCRCoreContainer extends DummyModContainer
 {
-	public static Logger logger = LogManager.getLogger("rccr");
+	public static Logger logger = LogManager.getLogger("rccrcore");
 
 	public RCCRCoreContainer()
 	{
@@ -27,7 +27,7 @@ public class RCCRCoreContainer extends DummyModContainer
 		ModMetadata meta = super.getMetadata();
 		meta.modId = "rccrcore";
 		meta.name = "RCCR Core";
-		meta.description = "Core Mod for RCCR. Required for RCCR.";
+		meta.description = "Core Mod for Razaekel's mods. Required for RCCR and ReWedge.";
 		
 		meta.url = "";
 		meta.updateUrl = "";

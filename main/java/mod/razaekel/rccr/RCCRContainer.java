@@ -18,16 +18,16 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class RCCRContainer extends DummyModContainer
 {
-	public static Logger logger = LogManager.getLogger("rccr");
+//	public static Logger logger = LogManager.getLogger("rccr");
 
 	public RCCRContainer()
 	{
 		super(new ModMetadata());
 
 		ModMetadata meta = super.getMetadata();
-		meta.modId = "rccrcore";
-		meta.name = "RCCR Core";
-		meta.description = "Core Mod for RCCR. Required for RCCR.";
+		meta.modId = "rccr";
+		meta.name = "RCCR";
+		meta.description = "Modifies World Height. Based on the Cubic Chunks mod by Robinton.";
 		
 		meta.url = "";
 		meta.updateUrl = "";
@@ -35,7 +35,7 @@ public class RCCRContainer extends DummyModContainer
 		meta.logoFile = "";
 		meta.version = RCCR.VERSION;
 		meta.authorList = Arrays.asList("Razaekel");
-		meta.credits = "Ivorius";
+		meta.credits = "Robinton";
 		meta.parent = "";
 		meta.screenshots = new String[0];
 		
