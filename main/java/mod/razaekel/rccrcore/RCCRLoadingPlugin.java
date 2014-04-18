@@ -5,9 +5,12 @@ import java.util.Map;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
 public class RCCRLoadingPlugin implements IFMLLoadingPlugin {
-
+{
 	@Override
-	public String[] getASMTransformerClass() {
+	public String[] getASMTransformerClass()
+	{
+		if(RCCRCore.DEBUG){System.out.println("RCCRCore LOADED! Loading Class Transformer!");}
+		
 		return new String[]{RCCRClassTransformer.class.getName()};
 	}
 

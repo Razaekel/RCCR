@@ -13,6 +13,8 @@ public class RCCRClassTransformer implements IClassTransformer
 	
 	public RCCRClassTransformer()
 	{
+		if(RCCRCore.DEBUG){System.out.println("RCCRCore Class Transformer LOADED!");}
+		
 		RzDevRemapper.setUp();
 		transformers = new Hashtable<String, RzClassTransformer>();
 		generalTransformers = new ArrayList<RzClassTransformer>();

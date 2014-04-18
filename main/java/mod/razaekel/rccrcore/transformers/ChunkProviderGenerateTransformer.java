@@ -26,12 +26,14 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 	
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
-	{
+	{		
+		if(RCCRCore.DEBUG){System.out.println("CPG TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		
 		int node_index = -1;
 		
 		if(methodID.equals("generateTerrain"))
 		{
-			System.out.println("********* Inside target method!");
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method!");}
 			
 			//System.out.println("m.instructions.size = " + m.instructions.size());
 
@@ -64,16 +66,19 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 				2013-07-05 18:32:29 [INFO] [STDOUT] ********* index : 336 currentNode.getOpcode() = 110
 			 */
 
-			System.out.println("********* bipush_index should be 2 -> " + node_index);
+			if(RCCRCore.DEBUG){System.out.println("********* bipush_index should be 2 -> " + node_index);}
 
-			if (targetNode == null)
+			if(RCCRCore.DEBUG)
 			{
-				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-			}
-
-			if (node_index == -1)
-			{
-				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
+				if (targetNode == null)
+				{
+					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
+				}
+	
+				if (node_index == -1)
+				{
+					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
+				}
 			}
 
 			/*
@@ -111,7 +116,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 			//just remove these nodes from the instruction set, this will prevent the instruction
 			methodNode.instructions.remove(remNode1);
 
-			System.out.println("Patching Complete!");
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
 			return true;
 		}
