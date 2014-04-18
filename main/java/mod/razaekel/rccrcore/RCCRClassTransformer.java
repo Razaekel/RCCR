@@ -18,15 +18,13 @@ public class RCCRClassTransformer implements IClassTransformer
 		RzDevRemapper.setUp();
 		transformers = new Hashtable<String, RzClassTransformer>();
 		
-		if (Loader.isModLoaded("rewedge"))
-		{
-			registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
-		}
 		
-		if (Loader.isModLoaded("rccr"))
-		{
-			
-		}
+		registerTransformer("net.minecraft.world.World", new WorldTransformer());
+		
+//		if (Loader.isModLoaded("rewedge"))
+//		{
+//			registerTransformer("net.minecraft.world.gen.ChunkProviderGenerate", new ChunkProviderGenerateTransformer());
+//		}
 	}
 	
 	private void registerTransformer(String clazz, RzClassTransformer transformer)
