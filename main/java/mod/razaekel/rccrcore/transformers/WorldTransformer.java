@@ -28,7 +28,7 @@ public class WorldTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
-		if(RCCRCore.DEBUG){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		int node_index = -1;
 		
