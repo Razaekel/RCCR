@@ -34,14 +34,15 @@ public class WorldTransformer extends RzClassTransformerClass
 		registerExpectedMethod("getBlockLightValue_do", "getBlockLightValue_do", getMethodDescriptor(Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.BOOLEAN_TYPE));
 		registerExpectedMethod("getSkyBlockTypeBrightness", "getSkyBlockTypeBrightness", getMethodDescriptor(Type.INT_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("getSavedLightValue", "getSavedLightValue", getMethodDescriptor(Type.INT_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
+		registerExpectedMethod("setLightValue", "setLightValue", getMethodDescriptor(Type.VOID_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
+		registerExpectedMethod("getTileEntity", "getTileEntity", getMethodDescriptor("net/minecraft/tileentity/TileEntity", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
+		registerExpectedMethod("canBlockFreezeBody", "func_147478_e", getMethodDescriptor(Type.BOOLEAN_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.BOOLEAN_TYPE));
 	}
 	
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
 		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
-		
-		int node_index = -1;
 		
 		if (methodID.equals("getBlock"))
 		{
@@ -187,7 +188,59 @@ public class WorldTransformer extends RzClassTransformerClass
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
 			return true;
-		}	
+		}
+		else if(methodID.equals("setLightValue"))
+		{
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
+			return true;
+		}
+		else if(methodID.equals("getTileEntity"))
+		{
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
+			return true;
+		}
+		else if(methodID.equals("canBlockFreeze"))
+		{
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
+			return true;
+		}
+		else if(methodID.equals("canBlockFreezeBody"))
+		{
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
+			return true;
+		}
 		
 		return false;
 	}
