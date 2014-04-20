@@ -19,7 +19,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class InsnTransformers
 {
-	public static boolean replace256(MethodNode methodNode, int targetIndex)
+	public static boolean replaceSIPUSH256(MethodNode methodNode, int targetIndex)
 	{
 		AbstractInsnNode currentNode = null;
 		AbstractInsnNode targetNode = null;
@@ -46,13 +46,7 @@ public class InsnTransformers
 
 		if(RCCRCore.DEBUG)
 		{
-			if (targetNode == null)
-			{
-				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				return false;
-			}
-
-			if (node_index == -1)
+			if (targetNode == null || node_index == -1)
 			{
 				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
 				return false;
@@ -66,13 +60,11 @@ public class InsnTransformers
 		methodNode.instructions.insert(targetNode, toInject);
 
 		methodNode.instructions.remove(remNode1);
-
-		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 		
 		return true;
 	}
 	
-	public static boolean replace255(MethodNode methodNode, int targetIndex)
+	public static boolean replaceSIPUSH255(MethodNode methodNode, int targetIndex)
 	{
 		AbstractInsnNode currentNode = null;
 		AbstractInsnNode targetNode = null;
@@ -99,14 +91,10 @@ public class InsnTransformers
 
 		if(RCCRCore.DEBUG)
 		{
-			if (targetNode == null)
+			if (targetNode == null || node_index == -1)
 			{
 				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-			}
-
-			if (node_index == -1)
-			{
-				System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
+				return false;
 			}
 		}
 
@@ -119,8 +107,6 @@ public class InsnTransformers
 		methodNode.instructions.insert(targetNode, toInject);
 
 		methodNode.instructions.remove(remNode1);
-
-		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 		
 		return true;
 	}
