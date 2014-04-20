@@ -20,6 +20,7 @@ public class RCCRClassTransformer implements IClassTransformer
 		
 		
 		registerTransformer("net.minecraft.world.World", new WorldTransformer());
+		registerTransformer("net.minecraft.world.WorldProvider", new WorldProviderTransformer());
 		
 //		if (Loader.isModLoaded("rewedge"))
 //		{
