@@ -9,7 +9,7 @@ public class RzDevRemapper
 	public static void setUp()
 	{
 		fakeMappings.put("generateTerrain", "func_147424_a");
-		fakeMappings.put("getBlock", "getBlock");
+		fakeMappings.put("canBlockFreezeBody", "func_147478_e");
 	}
 	
 	public static String getSrgName(String name)
