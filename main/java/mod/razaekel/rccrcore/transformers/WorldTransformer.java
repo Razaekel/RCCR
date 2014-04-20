@@ -33,6 +33,7 @@ public class WorldTransformer extends RzClassTransformerClass
 		registerExpectedMethod("getFullBlockLightValue", "getFullBlockLightValue", getMethodDescriptor(Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("getBlockLightValue_do", "getBlockLightValue_do", getMethodDescriptor(Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.BOOLEAN_TYPE));
 		registerExpectedMethod("getSkyBlockTypeBrightness", "getSkyBlockTypeBrightness", getMethodDescriptor(Type.INT_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
+		registerExpectedMethod("getSavedLightValue", "getSavedLightValue", getMethodDescriptor(Type.INT_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 	}
 	
 	@Override
@@ -46,101 +47,23 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
-			InsnTransformers.replace256(methodNode, 17);
-//			AbstractInsnNode currentNode = null;
-//			AbstractInsnNode targetNode = null;
-//
-//			@SuppressWarnings("unchecked")
-//			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-//
-//			int index = -1;
-//
-//			while (iter.hasNext())
-//			{
-//				index++;
-//				currentNode = iter.next();
-//
-//				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-//				{
-//					targetNode = currentNode;
-//					node_index = index;
-//				}
-//			}
-//
-//			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 17 -> " + node_index);}
-//
-//			if(RCCRCore.DEBUG)
-//			{
-//				if (targetNode == null)
-//				{
-//					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-//				}
-//	
-//				if (node_index == -1)
-//				{
-//					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-//				}
-//			}
-//
-//			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-//
-//			InsnList toInject = new InsnList();
-//			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-//			methodNode.instructions.insert(targetNode, toInject);
-//
-//			methodNode.instructions.remove(remNode1);
-//
-//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-//			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 17))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
 			return true;
 		}
 		else if(methodID.equals("blockExists"))
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 			{
-				index++;
-				currentNode = iter.next();
-
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return true;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 5 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -150,49 +73,10 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-			
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 			{
-				index++;
-				currentNode = iter.next();
-
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 5 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-			
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -202,48 +86,10 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 26 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -253,48 +99,10 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 26 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -304,48 +112,10 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 26 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -355,80 +125,15 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode target1Node = null;
-			AbstractInsnNode target2Node = null;
-			
-			int node_index2 = -1;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-			/* additional work required here
-			 * 
-			 * Have
-			 * L4
-			    LINENUMBER 670 L4
-			    SIPUSH 255
-			    ISTORE 2
-			 * Need:
-			 * L4
-			    LINENUMBER 670 L4
-			    INVOKESTATIC mod/razaekel/rccr/RCCR.getWorldHeight ()I
-			    ICONST_1
-			    ISUB
-			    ISTORE 2
-			 */
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					target1Node = currentNode;
-					node_index = index;
-				}
-				else
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 255)
-				{
-					target2Node = currentNode;
-					node_index2 = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 12 -> " + node_index);}
-			if(RCCRCore.DEBUG){System.out.println("********* node_index2 should be 16 -> " + node_index2);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (target1Node == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-			AbstractInsnNode remNode2 = methodNode.instructions.get(node_index2);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(target1Node, toInject);
 			
-			InsnList toInject2 = new InsnList();
-			toInject2.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			toInject2.add(new InsnNode(ICONST_1));
-			toInject2.add(new InsnNode(ISUB));
-			methodNode.instructions.insert(target2Node, toInject2);
-
-			methodNode.instructions.remove(remNode1);
-			methodNode.instructions.remove(remNode2);
+			if(!InsnTransformers.replaceSIPUSH255(methodNode, 16))
+			{
+				return false;
+			}
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -438,80 +143,15 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode target1Node = null;
-			AbstractInsnNode target2Node = null;
-			
-			int node_index2 = -1;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-			/* additional work required here
-			 * 
-			 * Have
-			 * L4
-			    LINENUMBER 670 L4
-			    SIPUSH 255
-			    ISTORE 2
-			 * Need:
-			 * L4
-			    LINENUMBER 670 L4
-			    INVOKESTATIC mod/razaekel/rccr/RCCR.getWorldHeight ()I
-			    ICONST_1
-			    ISUB
-			    ISTORE 2
-			 */
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 137))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					target1Node = currentNode;
-					node_index = index;
-				}
-				else
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 255)
-				{
-					target2Node = currentNode;
-					node_index2 = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 12 -> " + node_index);}
-			if(RCCRCore.DEBUG){System.out.println("********* node_index2 should be 16 -> " + node_index2);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (target1Node == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-			AbstractInsnNode remNode2 = methodNode.instructions.get(node_index2);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(target1Node, toInject);
 			
-			InsnList toInject2 = new InsnList();
-			toInject2.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			toInject2.add(new InsnNode(ICONST_1));
-			toInject2.add(new InsnNode(ISUB));
-			methodNode.instructions.insert(target2Node, toInject2);
-
-			methodNode.instructions.remove(remNode1);
-			methodNode.instructions.remove(remNode2);
+			if(!InsnTransformers.replaceSIPUSH255(methodNode, 141))
+			{
+				return false;
+			}
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
@@ -521,138 +161,33 @@ public class WorldTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode targetNode = null;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
-				index++;
-				currentNode = iter.next();
-
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					targetNode = currentNode;
-					node_index = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 26 -> " + node_index);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (targetNode == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-
-			methodNode.instructions.insert(targetNode, toInject);
-
-			methodNode.instructions.remove(remNode1);
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
 			return true;
 		}
-		else if(methodID.equals("getFullBlockLightValue"))
+		else if(methodID.equals("getSavedLightValue"))
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			AbstractInsnNode currentNode = null;
-			AbstractInsnNode target1Node = null;
-			AbstractInsnNode target2Node = null;
-			
-			int node_index2 = -1;
-
-			@SuppressWarnings("unchecked")
-			Iterator<AbstractInsnNode> iter = methodNode.instructions.iterator();
-
-			int index = -1;
-			/* additional work required here
-			 * 
-			 * Have
-			 * L4
-			    LINENUMBER 670 L4
-			    SIPUSH 255
-			    ISTORE 2
-			 * Need:
-			 * L4
-			    LINENUMBER 670 L4
-			    INVOKESTATIC mod/razaekel/rccr/RCCR.getWorldHeight ()I
-			    ICONST_1
-			    ISUB
-			    ISTORE 2
-			 */
-			while (iter.hasNext())
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
 			{
-				index++;
-				currentNode = iter.next();
-				
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 256)
-				{
-					target1Node = currentNode;
-					node_index = index;
-				}
-				else
-				if (currentNode.getOpcode() == SIPUSH && ((IntInsnNode) currentNode).operand == 255)
-				{
-					target2Node = currentNode;
-					node_index2 = index;
-				}
+				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 12 -> " + node_index);}
-			if(RCCRCore.DEBUG){System.out.println("********* node_index2 should be 16 -> " + node_index2);}
-
-			if(RCCRCore.DEBUG)
-			{
-				if (target1Node == null)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-	
-				if (node_index == -1)
-				{
-					System.out.println("Did not find all necessary target nodes! ABANDON CLASS!");
-				}
-			}
-
-			AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
-			AbstractInsnNode remNode2 = methodNode.instructions.get(node_index2);
-
-			InsnList toInject = new InsnList();
-			toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			methodNode.instructions.insert(target1Node, toInject);
 			
-			InsnList toInject2 = new InsnList();
-			toInject2.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeight", Type.getMethodDescriptor(Type.INT_TYPE)));
-			toInject2.add(new InsnNode(ICONST_1));
-			toInject2.add(new InsnNode(ISUB));
-			methodNode.instructions.insert(target2Node, toInject2);
-
-			methodNode.instructions.remove(remNode1);
-			methodNode.instructions.remove(remNode2);
+			if(!InsnTransformers.replaceSIPUSH255(methodNode, 16))
+			{
+				return false;
+			}
 
 			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
 			return true;
-		}
-		
+		}	
 		
 		return false;
 	}
