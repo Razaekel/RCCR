@@ -31,13 +31,10 @@ public abstract class RzClassTransformerClass extends RzClassTransformer
 			for (int methodIndex = 0; methodIndex < registeredMethods.size(); methodIndex++)
 			{
 				String[] methodInfo = registeredMethods.get(methodIndex);
-				
-				if (RCCRCore.DEBUG_SPAM){System.out.println("Inspecting " + m.name + "!! Looking for desc: " + m.desc +" using " + methodInfo[1] +"!");}
-				
+						
 				String srgName = getSrgName(className, m);
 				String srgSignature = getSrgDescriptor(m.desc);
 				
-				if (RCCRCore.DEBUG_SPAM){System.out.println("Getting " + srgName + " for " + className + " and " + srgSignature + " for " + m.desc +"!");}
 				if (RCCRCore.DEBUG){System.out.println("Checking " + srgName + " against " + methodInfo[0] + " and " + srgSignature + " against " + methodInfo[1] +"!");}
 				
 				if (srgName.equals(methodInfo[0]) && srgSignature.equals(methodInfo[1]))
