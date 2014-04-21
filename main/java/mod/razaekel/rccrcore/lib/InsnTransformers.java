@@ -6,10 +6,9 @@ import java.util.Iterator;
 
 import mod.razaekel.rccrcore.RCCRCore;
 
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
-
-import com.sun.xml.internal.ws.org.objectweb.asm.Opcodes;
 
 public class InsnTransformers
 {
