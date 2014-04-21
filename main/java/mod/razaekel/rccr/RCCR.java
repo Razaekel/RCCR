@@ -9,7 +9,8 @@ public class RCCR
 {
 	public static final String VERSION = "a1";
 	
-	private static int worldHeight = 128;
+	private static int worldHeightInCubes = 16;
+	private static int worldHeight = worldHeightInCubes << 4;
 	
 	public static int getWorldHeight()
 	{
@@ -19,5 +20,10 @@ public class RCCR
 	public static int getNoSkyWorldHeight() // returns WorldHeight/2
 	{
 		return worldHeight >> 1;
+	}
+	
+	public static int getWorldHeightInCubes() // returns WorldHeight/2
+	{
+		return worldHeightInCubes;
 	}
 }
