@@ -67,7 +67,7 @@ public class WorldTransformer extends RzClassTransformerClass
 	
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 				{
-					return true;
+					return false;
 				}
 	
 				break;
@@ -200,7 +200,7 @@ public class WorldTransformer extends RzClassTransformerClass
 			case "getBlockLightOpacity":
 				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
-				if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
+				if(!InsnTransformers.replaceSIPUSH256(methodNode, 25))
 				{
 					return false;
 				}
