@@ -21,6 +21,8 @@ public class RCCRClassTransformer implements IClassTransformer
 		
 		registerTransformer("net.minecraft.world.World", new WorldTransformer());
 		registerTransformer("net.minecraft.world.WorldProvider", new WorldProviderTransformer());
+		registerTransformer("net.minecraft.world.chunk.Chunk", new ChunkTransformer());
+		registerTransformer("net.minecraft.client.render.RenderGlobal", new RenderGlobalTransformer());
 		
 //		if (Loader.isModLoaded("rewedge"))
 //		{
