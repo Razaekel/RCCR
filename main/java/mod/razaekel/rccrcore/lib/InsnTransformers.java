@@ -5,6 +5,7 @@ import static org.objectweb.asm.Opcodes.*;
 import java.util.Iterator;
 
 import mod.razaekel.rccrcore.RCCRCore;
+import mod.razaekel.rccrcore.RzClassTransformer;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
@@ -187,7 +188,8 @@ public class InsnTransformers
 		AbstractInsnNode remNode1 = methodNode.instructions.get(node_index);
 
 		InsnList toInject = new InsnList();
-		toInject.add(new VarInsnNode(Opcodes.ILOAD, 1));
+//		toInject.add(new MethodInsnNode(INVOKESTATIC, "mod/razaekel/rccr/RCCR", "getWorldHeightInCubes", RzClassTransformer.getMethodDescriptor(Type.VOID_TYPE)));
+		toInject.add(new FieldInsnNode(GETFIELD, "mod/razaekel/rccr/RCCR", "worldHeightInCubes", "I"));
 		methodNode.instructions.insert(targetNode, toInject);
 
 		methodNode.instructions.remove(remNode1);
