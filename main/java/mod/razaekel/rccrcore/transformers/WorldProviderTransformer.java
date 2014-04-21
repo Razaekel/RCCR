@@ -24,7 +24,7 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 2))
 			{
 				return false;
 			}
@@ -37,12 +37,12 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			if(!InsnTransformers.replaceSIPUSH128(methodNode, 21))
+			if(!InsnTransformers.replaceSIPUSH128(methodNode, 5))
 			{
 				return false;
 			}
 			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 9))
 			{
 				return false;
 			}
