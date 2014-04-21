@@ -45,8 +45,15 @@ public class WorldTransformer extends RzClassTransformerClass
 	{		
 		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
-		if (methodID.equals("getBlock"))
+		if(methodID == null)
 		{
+			return false;
+		}
+		
+//		if (methodID.equals("getBlock"))
+		switch (methodID)
+		{
+		case "getBlock":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 17))
@@ -54,12 +61,14 @@ public class WorldTransformer extends RzClassTransformerClass
 				return false;
 			}
 
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("blockExists"))
-		{
+			break;
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("blockExists"))
+//		{
+		case "blockExists":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
@@ -67,64 +76,78 @@ public class WorldTransformer extends RzClassTransformerClass
 				return true;
 			}
 
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("checkChunksExist"))
-		{
+			break;
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("checkChunksExist"))
+//		{
+		case "checkChunksExist":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("setBlock"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("setBlock"))
+//		{
+		case "setBlock":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getBlockMetadata"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getBlockMetadata"))
+//		{
+		case "getBlockMetadata":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("setBlockMetadataWithNotify"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("setBlockMetadataWithNotify"))
+//		{
+		case "setBlockMetadataWithNotify":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getFullBlockLightValue"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getFullBlockLightValue"))
+//		{
+		case "getFullBlockLightValue":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
@@ -136,13 +159,16 @@ public class WorldTransformer extends RzClassTransformerClass
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getBlockLightValue_do"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getBlockLightValue_do"))
+//		{
+		case "getBlockLightValue_do":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 137))
@@ -154,26 +180,32 @@ public class WorldTransformer extends RzClassTransformerClass
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getSkyBlockTypeBrightness"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getSkyBlockTypeBrightness"))
+//		{
+		case "getSkyBlockTypeBrightness":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getSavedLightValue"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getSavedLightValue"))
+//		{
+		case "getSavedLightValue":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
@@ -185,78 +217,83 @@ public class WorldTransformer extends RzClassTransformerClass
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("setLightValue"))
-		{
+			break;
+//
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("setLightValue"))
+//		{
+		case "setLightValue":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getTileEntity"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getTileEntity"))
+//		{
+		case "getTileEntity":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 			{
 				return false;
 			}
+			
+			break;
 
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("canBlockFreeze"))
-		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
-			{
-				return false;
-			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("canBlockFreezeBody"))
-		{
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("canBlockFreezeBody"))
+//		{
+		case "canBlockFreezeBody":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
-		}
-		else if(methodID.equals("getBlockLightOpacity"))
-		{
+			break;
+
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
+//		}
+//		else if(methodID.equals("getBlockLightOpacity"))
+//		{
+		case "getBlockLightOpacity":
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
 			{
 				return false;
 			}
-
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 			
-			return true;
+			break;
+			
+		default:
+				
+			return false;
+			
+//			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+//			
+//			return true;
 		}
 		
-		return false;
+		return true;
 	}
 }
 
