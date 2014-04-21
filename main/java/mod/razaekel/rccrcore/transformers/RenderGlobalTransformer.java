@@ -287,9 +287,13 @@ public class RenderGlobalTransformer extends RzClassTransformerClass
 			toInject.add(new VarInsnNode(Opcodes.ILOAD, 4));
 			toInject.add(new InsnNode(Opcodes.IDIV));
 			toInject.add(new VarInsnNode(Opcodes.ISTORE, 14));
+			toInject.add(new VarInsnNode(Opcodes.ILOAD, 13));
+			toInject.add(new VarInsnNode(Opcodes.ILOAD, 14));
+			toInject.add(new VarInsnNode(Opcodes.ILOAD, 4));
+			toInject.add(new InsnNode(Opcodes.IAND));
+			toInject.add(new InsnNode(Opcodes.ISUB));
+			toInject.add(new VarInsnNode(Opcodes.ISTORE, 13));
 			methodNode.instructions.insert(targetNode, toInject);
-	
-			methodNode.instructions.remove(remNode1);
 			
 			return true;
 		}

@@ -25,56 +25,56 @@ public class ChunkTransformer extends RzClassTransformerClass
 	{		
 		if(RCCRCore.DEBUG_SPAM){System.out.println("CHUNK TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
-		if(methodID.equals("<init>"))
+		if (methodID == null)
 		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if (!InsnTransformers.replaceWithWorldHeightInCubes(methodNode, 7))
-			{
-				return false;
-			}
-			
-			if (!InsnTransformers.replaceWithWorldHeightInCubes(methodNode, 43))
-			{
-				return false;
-			}
-			
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("relightBlock"))
-		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if (!InsnTransformers.replaceSIPUSH255(methodNode, 10))
-			{
-				return false;
-			}
-			
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
-		else if(methodID.equals("getAreLevelsEmpty"))
-		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if (!InsnTransformers.replaceSIPUSH256(methodNode, 12))
-			{
-				return false;
-			}
-			
-			if (!InsnTransformers.replaceSIPUSH255(methodNode, 16))
-			{
-				return false;
-			}
-			
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
+			return false;
 		}
 		
-		return false;
+		switch (methodID)
+		{
+			case "<init>":
+				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				
+				if (!InsnTransformers.replaceWithWorldHeightInCubes(methodNode, 7))
+				{
+					return false;
+				}
+				
+				if (!InsnTransformers.replaceWithWorldHeightInCubes(methodNode, 43))
+				{
+					return false;
+				}
+				
+				break;
+			
+			case "relightBlock":
+				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				
+				if (!InsnTransformers.replaceSIPUSH255(methodNode, 10))
+				{
+					return false;
+				}
+				
+				break;
+			
+			case "getAreLevelsEmpty":
+				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				
+				if (!InsnTransformers.replaceSIPUSH256(methodNode, 12))
+				{
+					return false;
+				}
+				
+				if (!InsnTransformers.replaceSIPUSH255(methodNode, 16))
+				{
+					return false;
+				}
+				
+				break;
+		}
+		
+		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+		
+		return true;
 	}
 }

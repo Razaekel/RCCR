@@ -20,38 +20,39 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 	{		
 		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD PROVIDER TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
-		if(methodID.equals("getHeight"))
+		switch (methodID)
 		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 2))
-			{
+			default:
 				return false;
-			}
-	
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
+				
+			case "getHeight":
+				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				
+				if(!InsnTransformers.replaceSIPUSH256(methodNode, 2))
+				{
+					return false;
+				}
+				
+				break;
+
+			case "getActualHeight":
+				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				
+				if(!InsnTransformers.replaceSIPUSH128(methodNode, 5))
+				{
+					return false;
+				}
+				
+				if(!InsnTransformers.replaceSIPUSH256(methodNode, 9))
+				{
+					return false;
+				}
+				
+				break;
 		}
-		else if(methodID.equals("getActualHeight"))
-		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
-			
-			if(!InsnTransformers.replaceSIPUSH128(methodNode, 5))
-			{
-				return false;
-			}
-			
-			if(!InsnTransformers.replaceSIPUSH256(methodNode, 9))
-			{
-				return false;
-			}
 	
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
-			
-			return true;
-		}
+		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
 		
-		return false;
+		return true;
 	}
 }
