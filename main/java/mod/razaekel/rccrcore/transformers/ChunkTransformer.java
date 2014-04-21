@@ -15,7 +15,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 {
 	public ChunkTransformer()
 	{
-		registerExpectedMethod("<init>", "<init>", getMethodDescriptor(Type.VOID_TYPE, "net/minecraft/world/World", Type.INT_TYPE, Type.INT_TYPE));
+//		registerExpectedMethod("<init>", "<init>", getMethodDescriptor(Type.VOID_TYPE, "net/minecraft/world/World", Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("relightBlock", "relightBlock", getMethodDescriptor(Type.VOID_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("getAreLevelsEmpty", "getAreLevelsEmpty", getMethodDescriptor(Type.BOOLEAN_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 	}
