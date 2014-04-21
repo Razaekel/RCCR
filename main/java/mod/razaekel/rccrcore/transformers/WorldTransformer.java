@@ -37,6 +37,7 @@ public class WorldTransformer extends RzClassTransformerClass
 		registerExpectedMethod("setLightValue", "setLightValue", getMethodDescriptor(Type.VOID_TYPE, "net/minecraft/world/EnumSkyBlock", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("getTileEntity", "getTileEntity", getMethodDescriptor("net/minecraft/tileentity/TileEntity", Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 		registerExpectedMethod("canBlockFreezeBody", "func_147478_e", getMethodDescriptor(Type.BOOLEAN_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.BOOLEAN_TYPE));
+		registerExpectedMethod("getBlockLightOpacity", "getBlockLightOpacity", getMethodDescriptor(Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE, Type.INT_TYPE));
 	}
 	
 	@Override
@@ -229,6 +230,19 @@ public class WorldTransformer extends RzClassTransformerClass
 			return true;
 		}
 		else if(methodID.equals("canBlockFreezeBody"))
+		{
+			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			
+			if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
+			{
+				return false;
+			}
+
+			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			
+			return true;
+		}
+		else if(methodID.equals("getBlockLightOpacity"))
 		{
 			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
