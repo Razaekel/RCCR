@@ -1,4 +1,4 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import static org.objectweb.asm.Opcodes.*;
 
@@ -8,8 +8,8 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformerClass;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformerClass;
 
 public class RenderGlobalTransformer extends RzClassTransformerClass
 {
@@ -22,7 +22,7 @@ public class RenderGlobalTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{
-		if(RCCRCore.DEBUG_SPAM){System.out.println("CHUNK TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCR.DEBUG_SPAM){System.out.println("CHUNK TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		if(methodID.equals("loadRenderers"))
 		{
@@ -48,9 +48,9 @@ public class RenderGlobalTransformer extends RzClassTransformerClass
 				}
 			}
 	
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 40 -> " + node_index);}
+			if(RCCR.DEBUG){System.out.println("********* node_index should be 40 -> " + node_index);}
 	
-			if(RCCRCore.DEBUG)
+			if(RCCR.DEBUG)
 			{
 				if (targetNode == null || node_index == -1)
 				{
@@ -217,9 +217,9 @@ public class RenderGlobalTransformer extends RzClassTransformerClass
 				}
 			}
 	
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 40 -> " + node_index);}
+			if(RCCR.DEBUG){System.out.println("********* node_index should be 40 -> " + node_index);}
 	
-			if(RCCRCore.DEBUG)
+			if(RCCR.DEBUG)
 			{
 				if (targetNode == null || node_index == -1)
 				{

@@ -1,8 +1,9 @@
-package mod.razaekel.rccrcore;
+package mod.razaekel.rccr.core;
 
 import java.util.ArrayList;
 
 import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.RCCRContainer;
 
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -35,7 +36,7 @@ public abstract class RzClassTransformerClass extends RzClassTransformer
 				String srgName = getSrgName(className, m);
 				String srgSignature = getSrgDescriptor(m.desc);
 				
-				if (RCCRCore.DEBUG){System.out.println("Checking " + srgName + " against " + methodInfo[0] + " and " + srgSignature + " against " + methodInfo[1] +"!");}
+				if (RCCR.DEBUG){System.out.println("Checking " + srgName + " against " + methodInfo[0] + " and " + srgSignature + " against " + methodInfo[1] +"!");}
 				
 				if (srgName.equals(methodInfo[0]) && srgSignature.equals(methodInfo[1]))
 				{
@@ -54,7 +55,7 @@ public abstract class RzClassTransformerClass extends RzClassTransformer
 			if (!sigs[methodIndex])
 			{
 				String[] methodInfo = registeredMethods.get(methodIndex);
-				RCCRCoreContainer.logger.error("Could not transform expected method in class \"" + className + "\" (Obf: " + obf + "): " + methodInfo[0] + " - " + methodInfo[1] + " - " + methodInfo[2]);
+				RCCRContainer.logger.error("Could not transform expected method in class \"" + className + "\" (Obf: " + obf + "): " + methodInfo[0] + " - " + methodInfo[1] + " - " + methodInfo[2]);
 			}
 			else
 			{

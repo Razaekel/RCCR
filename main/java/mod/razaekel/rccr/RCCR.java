@@ -9,6 +9,9 @@ public class RCCR
 {
 	public static final String VERSION = "a1";
 	
+	public static final boolean DEBUG = true;
+	public static final boolean DEBUG_SPAM = false;
+	
 	private static int worldHeightInCubes = 16;
 	private static int worldHeight = worldHeightInCubes << 4;
 	

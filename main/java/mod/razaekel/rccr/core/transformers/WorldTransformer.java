@@ -1,12 +1,12 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import static org.objectweb.asm.Opcodes.*;
 
 import java.util.Iterator;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformerClass;
-import mod.razaekel.rccrcore.lib.InsnTransformers;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformerClass;
+import mod.razaekel.rccr.core.lib.InsnTransformers;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 import org.objectweb.asm.Type;
@@ -43,7 +43,7 @@ public class WorldTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
-		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCR.DEBUG_SPAM){System.out.println("WORLD TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		if(methodID == null)
 		{
@@ -53,7 +53,7 @@ public class WorldTransformer extends RzClassTransformerClass
 		switch (methodID)
 		{
 			case "getBlock":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 	
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 17))
 				{
@@ -63,7 +63,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "blockExists":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 	
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 				{
@@ -73,7 +73,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "checkChunksExist":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 	
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 				{
@@ -83,7 +83,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "setBlock":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 				{
@@ -93,7 +93,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getBlockMetadata":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 				{
@@ -103,7 +103,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "setBlockMetadataWithNotify":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 				{
@@ -113,7 +113,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getFullBlockLightValue":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
 				{
@@ -128,7 +128,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getBlockLightValue_do":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 137))
 				{
@@ -143,7 +143,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getSkyBlockTypeBrightness":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 	
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 26))
 				{
@@ -153,7 +153,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getSavedLightValue":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 12))
 				{
@@ -168,7 +168,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "setLightValue":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 21))
 				{
@@ -178,7 +178,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getTileEntity":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 5))
 				{
@@ -188,7 +188,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "canBlockFreezeBody":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 31))
 				{
@@ -198,7 +198,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				break;
 	
 			case "getBlockLightOpacity":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 25))
 				{
@@ -211,7 +211,7 @@ public class WorldTransformer extends RzClassTransformerClass
 				return false;
 		}
 		
-		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+		if(RCCR.DEBUG){System.out.println("Patching Complete!");}
 		
 		return true;
 	}

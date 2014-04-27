@@ -1,11 +1,11 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import java.io.File;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import mod.razaekel.rccrcore.RCCRCoreLoadingPlugin;
+import mod.razaekel.rccr.RCCRLoadingPlugin;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 public class ChunkClassTransformer implements IClassTransformer
@@ -16,7 +16,7 @@ public class ChunkClassTransformer implements IClassTransformer
 		if (name.equals("net.minecraft.world.chunk.Chunk"))
 		{
 			System.out.println(" INSIDE CHUNK TRANSFORMER ABOUT TO PATCH ");
-			data = patchClassInJar(name, data, name, RCCRCoreLoadingPlugin.location);
+			data = patchClassInJar(name, data, name, RCCRLoadingPlugin.location);
 		}
 		
 		return data;

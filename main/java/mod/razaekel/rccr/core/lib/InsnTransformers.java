@@ -1,11 +1,11 @@
-package mod.razaekel.rccrcore.lib;
+package mod.razaekel.rccr.core.lib;
 
 import static org.objectweb.asm.Opcodes.*;
 
 import java.util.Iterator;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformer;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformer;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
@@ -36,9 +36,9 @@ public class InsnTransformers
 			}
 		}
 
-		if(RCCRCore.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
+		if(RCCR.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
 
-		if(RCCRCore.DEBUG)
+		if(RCCR.DEBUG)
 		{
 			if (targetNode == null || node_index == -1)
 			{
@@ -81,9 +81,9 @@ public class InsnTransformers
 			}
 		}
 
-		if(RCCRCore.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
+		if(RCCR.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
 
-		if(RCCRCore.DEBUG)
+		if(RCCR.DEBUG)
 		{
 			if (targetNode == null || node_index == -1)
 			{
@@ -128,9 +128,9 @@ public class InsnTransformers
 			}
 		}
 
-		if(RCCRCore.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
+		if(RCCR.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
 
-		if(RCCRCore.DEBUG)
+		if(RCCR.DEBUG)
 		{
 			if (targetNode == null || node_index == -1)
 			{
@@ -174,9 +174,9 @@ public class InsnTransformers
 			}
 		}
 
-		if(RCCRCore.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
+		if(RCCR.DEBUG){System.out.println("********* node_index should be " + targetIndex + " -> " + node_index);}
 
-		if(RCCRCore.DEBUG)
+		if(RCCR.DEBUG)
 		{
 			if (targetNode == null || node_index == -1)
 			{

@@ -1,4 +1,6 @@
-package mod.razaekel.rccrcore;
+package mod.razaekel.rccr.core;
+
+import mod.razaekel.rccr.RCCRContainer;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
@@ -11,7 +13,7 @@ public abstract class RzClassTransformer
 {
 	public void printSubMethodError(String className, String methodID, String submethodID)
 	{
-		RCCRCoreContainer.logger.error("Could not patch " + className + "." + methodID + " (" + submethodID + ")!");
+		RCCRContainer.logger.error("Could not patch " + className + "." + methodID + " (" + submethodID + ")!");
 	}
 	
 	public static String getMethodDescriptor(Object returnValue, Object... params)
@@ -120,7 +122,7 @@ public abstract class RzClassTransformer
 		}
 		catch (Exception ex)
 		{
-			RCCRCoreContainer.logger.error("Error patching class PRE " + actualClassName + " (" + srgClassName + ")!", ex);
+			RCCRContainer.logger.error("Error patching class PRE " + actualClassName + " (" + srgClassName + ")!", ex);
 			return data;
 		}
 		
@@ -130,7 +132,7 @@ public abstract class RzClassTransformer
         }
         catch (Exception ex)
         {
-            RCCRCoreContainer.logger.error("Error patching class MAIN " + actualClassName + " (" + srgClassName + ")!", ex);
+            RCCRContainer.logger.error("Error patching class MAIN " + actualClassName + " (" + srgClassName + ")!", ex);
             return data;
         }
 		
@@ -145,7 +147,7 @@ public abstract class RzClassTransformer
             }
             catch (Exception ex)
             {
-                RCCRCoreContainer.logger.error("Error patching class POST " + actualClassName + " (" + srgClassName + ")!", ex);
+                RCCRContainer.logger.error("Error patching class POST " + actualClassName + " (" + srgClassName + ")!", ex);
                 return data;
             }
         }

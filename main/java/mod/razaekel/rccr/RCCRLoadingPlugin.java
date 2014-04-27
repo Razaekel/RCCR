@@ -1,15 +1,21 @@
 package mod.razaekel.rccr;
 
+import java.io.File;
 import java.util.Map;
 
+import mod.razaekel.rccr.core.RCCRClassTransformer;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
 public class RCCRLoadingPlugin implements IFMLLoadingPlugin
 {
+	public static File location;
+	
 	@Override
 	public String[] getASMTransformerClass()
 	{
-		return null;
+		if(RCCR.DEBUG){System.out.println("RCCRCore LOADED! Loading Class Transformer!");}
+		
+		return new String[]{RCCRClassTransformer.class.getName()};
 	}
 
 	@Override

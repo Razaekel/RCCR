@@ -1,10 +1,11 @@
-package mod.razaekel.rccrcore;
+package mod.razaekel.rccr.core;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 import cpw.mods.fml.common.Loader;
-import mod.razaekel.rccrcore.transformers.*;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.transformers.*;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 public class RCCRClassTransformer implements IClassTransformer
@@ -13,7 +14,7 @@ public class RCCRClassTransformer implements IClassTransformer
 	
 	public RCCRClassTransformer()
 	{
-		if(RCCRCore.DEBUG){System.out.println("RCCRCore Class Transformer LOADED!");}
+		if(RCCR.DEBUG){System.out.println("RCCRCore Class Transformer LOADED!");}
 		
 		RzDevRemapper.setUp();
 		transformers = new Hashtable<String, RzClassTransformer>();

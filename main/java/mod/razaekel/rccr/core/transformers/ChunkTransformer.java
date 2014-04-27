@@ -1,12 +1,12 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import static org.objectweb.asm.Opcodes.*;
 
 import java.util.Iterator;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformerClass;
-import mod.razaekel.rccrcore.lib.InsnTransformers;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformerClass;
+import mod.razaekel.rccr.core.lib.InsnTransformers;
 
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
@@ -23,7 +23,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
-		if(RCCRCore.DEBUG_SPAM){System.out.println("CHUNK TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCR.DEBUG_SPAM){System.out.println("CHUNK TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		if (methodID == null)
 		{
@@ -33,7 +33,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 		switch (methodID)
 		{
 			case "<init>":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if (!InsnTransformers.replaceWithWorldHeightInCubes(methodNode, 7))
 				{
@@ -48,7 +48,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 				break;
 			
 			case "relightBlock":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if (!InsnTransformers.replaceSIPUSH255(methodNode, 10))
 				{
@@ -58,7 +58,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 				break;
 			
 			case "getAreLevelsEmpty":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if (!InsnTransformers.replaceSIPUSH256(methodNode, 12))
 				{
@@ -73,7 +73,7 @@ public class ChunkTransformer extends RzClassTransformerClass
 				break;
 		}
 		
-		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+		if(RCCR.DEBUG){System.out.println("Patching Complete!");}
 		
 		return true;
 	}

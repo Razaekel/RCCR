@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class RCCRContainer extends DummyModContainer
 {
-//	public static Logger logger = LogManager.getLogger("rccr");
+	public static Logger logger = LogManager.getLogger("rccr");
 
 	public RCCRContainer()
 	{

@@ -1,4 +1,4 @@
-package mod.razaekel.rccrcore;
+package mod.razaekel.rccr.core;
 
 import java.util.Hashtable;
 

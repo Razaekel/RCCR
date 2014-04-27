@@ -1,11 +1,11 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.MethodNode;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformerClass;
-import mod.razaekel.rccrcore.lib.InsnTransformers;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformerClass;
+import mod.razaekel.rccr.core.lib.InsnTransformers;
 
 public class WorldProviderTransformer extends RzClassTransformerClass
 {
@@ -18,7 +18,7 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
-		if(RCCRCore.DEBUG_SPAM){System.out.println("WORLD PROVIDER TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCR.DEBUG_SPAM){System.out.println("WORLD PROVIDER TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		switch (methodID)
 		{
@@ -26,7 +26,7 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 				return false;
 				
 			case "getHeight":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH256(methodNode, 2))
 				{
@@ -36,7 +36,7 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 				break;
 
 			case "getActualHeight":
-				if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+				if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 				
 				if(!InsnTransformers.replaceSIPUSH128(methodNode, 5))
 				{
@@ -51,7 +51,7 @@ public class WorldProviderTransformer extends RzClassTransformerClass
 				break;
 		}
 	
-		if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+		if(RCCR.DEBUG){System.out.println("Patching Complete!");}
 		
 		return true;
 	}

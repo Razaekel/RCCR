@@ -1,11 +1,11 @@
-package mod.razaekel.rccrcore.transformers;
+package mod.razaekel.rccr.core.transformers;
 
 import static org.objectweb.asm.Opcodes.*;
 
 import java.util.Iterator;
 
-import mod.razaekel.rccrcore.RCCRCore;
-import mod.razaekel.rccrcore.RzClassTransformerClass;
+import mod.razaekel.rccr.RCCR;
+import mod.razaekel.rccr.core.RzClassTransformerClass;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 import org.objectweb.asm.Type;
@@ -28,13 +28,13 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 	@Override
 	public boolean transformMethod(String className, String methodID, MethodNode methodNode, boolean obf)
 	{		
-		if(RCCRCore.DEBUG_SPAM){System.out.println("CPG TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
+		if(RCCR.DEBUG_SPAM){System.out.println("CPG TRANSFORMER LOADED! BEGINNING TRANSFORM!");}
 		
 		int node_index = -1;
 		
 		if(methodID.equals("generateTerrain"))
 		{
-			if(RCCRCore.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
+			if(RCCR.DEBUG){System.out.println("********* Inside target method " + methodID + "!");}
 			
 			//System.out.println("m.instructions.size = " + m.instructions.size());
 
@@ -67,9 +67,9 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 				2013-07-05 18:32:29 [INFO] [STDOUT] ********* index : 336 currentNode.getOpcode() = 110
 			 */
 
-			if(RCCRCore.DEBUG){System.out.println("********* node_index should be 2 -> " + node_index);}
+			if(RCCR.DEBUG){System.out.println("********* node_index should be 2 -> " + node_index);}
 
-			if(RCCRCore.DEBUG)
+			if(RCCR.DEBUG)
 			{
 				if (targetNode == null)
 				{
@@ -117,7 +117,7 @@ public class ChunkProviderGenerateTransformer extends RzClassTransformerClass
 			//just remove these nodes from the instruction set, this will prevent the instruction
 			methodNode.instructions.remove(remNode1);
 
-			if(RCCRCore.DEBUG){System.out.println("Patching Complete!");}
+			if(RCCR.DEBUG){System.out.println("Patching Complete!");}
 			
 			return true;
 		}
